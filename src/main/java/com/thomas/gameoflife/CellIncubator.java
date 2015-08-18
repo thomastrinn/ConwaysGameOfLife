@@ -28,7 +28,7 @@ public class CellIncubator {
     }
     
     private boolean isEnviromentFavorableFor(Cell cell) {
-        final int numberOfLivingNeightbors = neighborCountProvider.countLivingNeightbors(cell);
+        final int numberOfLivingNeightbors = neighborCountProvider.countLivingNeighbors(cell);
         return numberOfLivingNeightbors == 3;
     }
 }

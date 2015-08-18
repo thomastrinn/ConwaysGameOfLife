@@ -8,17 +8,17 @@ import java.util.List;
  *
  * @author thomas
  */
-public class LivingCellDestinyEvaulator {
+public class LivingCellDestinyEvaluator {
     
     private static final List<Integer> FAVORABLE_ENVIRONMENT = Arrays.asList(2, 3);
 
     private final NeighborCountProvider neighborCountProvider;
 
-    public LivingCellDestinyEvaulator(NeighborCountProvider neighborCountProvider) {
+    public LivingCellDestinyEvaluator(NeighborCountProvider neighborCountProvider) {
         this.neighborCountProvider = neighborCountProvider;
     }
 
-    public CellDestiny evaulateDestinyOf(Cell cell) {
+    public CellDestiny evaluateDestinyOf(Cell cell) {
         if (isEnviromentFavorableFor(cell)) {
             return LIVES_ON;
         }
@@ -26,7 +26,7 @@ public class LivingCellDestinyEvaulator {
     }
     
     private boolean isEnviromentFavorableFor(Cell cell) {
-        final int numberOfNeightbors = neighborCountProvider.countLivingNeightbors(cell);
+        final int numberOfNeightbors = neighborCountProvider.countLivingNeighbors(cell);
         return FAVORABLE_ENVIRONMENT.contains(numberOfNeightbors);
     }
 

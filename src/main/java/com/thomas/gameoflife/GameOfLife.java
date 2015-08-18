@@ -11,7 +11,7 @@ import java.util.Objects;
 public class GameOfLife {
 
     private final List<Cell> livingCells;
-    private final LivingCellDestinyEvaulator livingCellDestinyEvaulator;
+    private final LivingCellDestinyEvaluator livingCellDestinyEvaulator;
     private final CellIncubator incubator;
 
     public GameOfLife(List<Cell> livingCells) {
@@ -19,7 +19,7 @@ public class GameOfLife {
 
         final NeighborCountProvider neighborCountProvider = new NeighborCountProvider(livingCells);
         final DeadCellProvider deadCellProvider = new DeadCellProvider(livingCells);
-        livingCellDestinyEvaulator = new LivingCellDestinyEvaulator(neighborCountProvider);
+        livingCellDestinyEvaulator = new LivingCellDestinyEvaluator(neighborCountProvider);
         incubator = new CellIncubator(deadCellProvider, neighborCountProvider);
     }
 
@@ -42,6 +42,6 @@ public class GameOfLife {
     }
 
     private boolean shouldTheCellDie(Cell cell) {
-        return CellDestiny.DEATH == livingCellDestinyEvaulator.evaulateDestinyOf(cell);
+        return CellDestiny.DEATH == livingCellDestinyEvaulator.evaluateDestinyOf(cell);
     }
 }

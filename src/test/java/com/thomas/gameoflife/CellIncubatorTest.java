@@ -30,7 +30,7 @@ public class CellIncubatorTest {
     public void testDeadCellWithExactlyThreeLivingNeightborWillComeToLive() {
         Cell deadCell = new Cell(0, 0);
         doReturn(Arrays.asList(deadCell)).when(deadCellProvider).deadCells();
-        doReturn(3).when(neighborCountProvider).countLivingNeightbors(argThat(is(equalTo(deadCell))));
+        doReturn(3).when(neighborCountProvider).countLivingNeighbors(argThat(is(equalTo(deadCell))));
         
         assertThat(cellIncubator.getInfants(), is(Arrays.asList(new Cell(0, 0))));
     }
@@ -39,7 +39,7 @@ public class CellIncubatorTest {
     public void testDeadCellWithLessThreeLivingNeightborWontComeToLive() {
         Cell deadCell = new Cell(0, 0);
         doReturn(Arrays.asList(deadCell)).when(deadCellProvider).deadCells();
-        doReturn(2).when(neighborCountProvider).countLivingNeightbors(argThat(is(equalTo(deadCell))));
+        doReturn(2).when(neighborCountProvider).countLivingNeighbors(argThat(is(equalTo(deadCell))));
         
         assertThat(cellIncubator.getInfants().isEmpty(), is(true));
     }
@@ -48,7 +48,7 @@ public class CellIncubatorTest {
     public void testDeadCellWithMoreThreeLivingNeightborWontComeToLive() {
         Cell deadCell = new Cell(0, 0);
         doReturn(Arrays.asList(deadCell)).when(deadCellProvider).deadCells();
-        doReturn(4).when(neighborCountProvider).countLivingNeightbors(argThat(is(equalTo(deadCell))));
+        doReturn(4).when(neighborCountProvider).countLivingNeighbors(argThat(is(equalTo(deadCell))));
         
         assertThat(cellIncubator.getInfants().isEmpty(), is(true));
     }

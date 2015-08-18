@@ -14,7 +14,7 @@ public class NeighborCountProvider {
         this.livingCells = livingCells;
     }
 
-    public int countLivingNeightbors(Cell cell) {
+    public int countLivingNeighbors(Cell cell) {
         int neightbors = 0;
         for (Cell livingCell : livingCells) {
             if (cell.isNeighborOf(livingCell)) {
