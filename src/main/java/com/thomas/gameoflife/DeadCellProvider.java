@@ -19,6 +19,7 @@ public class DeadCellProvider {
     }
 
     public List<Cell> deadCells() {
+        deadCells.clear();
         for (Cell livingCell : livingCells) {
             findSurrondingDeadCells(livingCell);
         }

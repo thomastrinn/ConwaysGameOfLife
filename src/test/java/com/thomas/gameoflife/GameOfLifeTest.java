@@ -39,4 +39,55 @@ public class GameOfLifeTest {
         )));
     }
 
+    @Test
+    public void testGlider() {
+        final List<Cell> cells = new LinkedList<>(Arrays.asList(
+                new Cell(0, 0),
+                new Cell(1, 0),
+                new Cell(2, 0),
+                new Cell(2, 1),
+                new Cell(1, 2)
+        ));
+        
+        GameOfLife gameOfLife = new GameOfLife(cells);
+        gameOfLife.nextGeneration();
+        
+        assertThat(cells, is(Arrays.asList(
+                new Cell(1, 0),
+                new Cell(2, 0),
+                new Cell(2, 1),
+                new Cell(1, -1),
+                new Cell(0, 1)
+        )));
+        
+        gameOfLife.nextGeneration();
+        
+        assertThat(cells, is(Arrays.asList(
+                new Cell(2, 0),
+                new Cell(2, 1),
+                new Cell(1, -1),
+                new Cell(2, -1),
+                new Cell(0, 0)
+        )));
+        
+        gameOfLife.nextGeneration();
+        
+        assertThat(cells, is(Arrays.asList(
+                new Cell(2, 0),
+                new Cell(1, -1),
+                new Cell(2, -1),
+                new Cell(3, 0),
+                new Cell(1, 1)
+        )));
+        
+        gameOfLife.nextGeneration();
+        
+        assertThat(cells, is(Arrays.asList(
+                new Cell(1, -1),
+                new Cell(2, -1),
+                new Cell(3, 0),
+                new Cell(3, -1),
+                new Cell(2, 1)
+        )));
+    }
 }
