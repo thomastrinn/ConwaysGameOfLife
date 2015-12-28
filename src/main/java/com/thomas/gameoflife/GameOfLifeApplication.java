@@ -42,25 +42,26 @@ public class GameOfLifeApplication extends Application {
         final GraphicsContext gc = canvas.getGraphicsContext2D();
 
         final List<Cell> cells = loadCells("gosper_glider_gun.json");
-        timer = new Timer();
-
-        timer.schedule(new CellDrawerTask(primaryStage, gc, cells), 0, 60);
 
         root.getChildren().add(canvas);
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        timer = new Timer();
+
+        timer.schedule(new CellDrawerTask(primaryStage, gc, cells), 0, 60);
     }
 
     @Override
     public void stop() {
         timer.cancel();
     }
-    
+
     private List<Cell> loadCells(String name) throws IOException {
-         InputStream resource = getClass().getClassLoader().getResourceAsStream(name);
-         String json = IOUtils.toString(resource);
-         
-         Type cellListType = new TypeToken<List<Cell>>(){}.getType();
-         return new Gson().fromJson(json, cellListType);
-     }
+        InputStream resource = getClass().getClassLoader().getResourceAsStream(name);
+        String json = IOUtils.toString(resource);
+
+        Type cellListType = new TypeToken<List<Cell>>(){}.getType();
+        return new Gson().fromJson(json, cellListType);
+    }
 }
